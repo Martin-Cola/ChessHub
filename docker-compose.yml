@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: martin
+      POSTGRES_PASSWORD: martin
+
+  mysql:
+    image: mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: martin
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 9443:8080
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 9444:80
+    depends_on:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
+
+volumes:
+  postgres-data:
+  mysql-data:

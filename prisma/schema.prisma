@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  NC
+  S2  @map("2S")
+  S1  @map("1S")
+  N3  @map("3N")
+  N2  @map("2N")
+  N1  @map("1N")
+  CM
+  M
+  FM
+  IM
+  GM
+  WNC
+  W2S
+  W1S
+  W3N
+  W2N
+  W1N
+  WCM
+  WM
+  WFM
+  WIM
+  WGM
+}
+
+model Player {
+  id       Int      @id @default(autoincrement())
+  name     String
+  category Category @default(NC)
+  score    Int
+  image    String?
+}
