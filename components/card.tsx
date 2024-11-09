@@ -1,7 +1,7 @@
 "use client";
 
 import { Player } from "@/lib/interfaces";
-import { Card, CardHeader, CardBody } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
 
 export default function PlayerCard({ name, score, category, image }: Player) {
@@ -14,7 +14,12 @@ export default function PlayerCard({ name, score, category, image }: Player) {
       </CardHeader>
       <CardBody className="py-2">
         <div className="relative rounded-xl h-full overflow-hidden">
-          <Image alt="Card background" className="object-center object-cover" fill src={image ? image : ""} />
+          <Image
+            alt="Card background"
+            className="object-center object-cover"
+            fill
+            src={image ? image : ""}
+          />
         </div>
       </CardBody>
     </Card>

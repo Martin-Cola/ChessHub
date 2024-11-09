@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Avatar,
-  Button,
-  Switch,
-} from "@nextui-org/react";
+import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/popover";
+import { Avatar } from "@nextui-org/avatar";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 export default function Navbar() {

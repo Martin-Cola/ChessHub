@@ -1,8 +1,10 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
-import  Navbar  from "@/components/navbar";
-
+import Navbar from "@/components/navbar";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: "Chess Hub",
@@ -26,9 +28,8 @@ export default function RootLayout({
       <body className="min-h-screen bg-background">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
+            <Navbar />
 
-          <Navbar /> 
-            
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>

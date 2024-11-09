@@ -36,6 +36,6 @@ model Player {
   id       Int      @id @default(autoincrement())
   name     String
   category Category @default(NC)
-  score    Int
+  score    Int      @default(1440)
   image    String?
 }

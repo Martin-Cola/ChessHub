@@ -1,15 +1,4 @@
 services:
-  postgres:
-    image: postgres
-    restart: unless-stopped
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: martin
-      POSTGRES_PASSWORD: martin
-
   mysql:
     image: mysql
     restart: unless-stopped
@@ -20,15 +9,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: martin
 
-  adminer:
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - 9443:8080
-
   phpmyadmin:
     image: phpmyadmin
-    restart: unless-stopped
+    restart: unless-stoppednpm
     ports:
       - 9444:80
     depends_on:
