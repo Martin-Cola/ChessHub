@@ -9,13 +9,13 @@ export default function Page() {
   const username: string = "martin";
   const password: string = "martin";
 
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   function login() {
     if (
-      usernameRef.current.value == username &&
-      usernameRef.current.value == password
+      usernameRef.current!.value == username &&
+      usernameRef.current!.value == password
     ) {
       router.push("/");
     } else {

@@ -1,11 +1,12 @@
 import PlayerCard from "@/components/card";
 import { prisma } from "@/prisma/prisma-client";
-import { Button } from "@nextui-org/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import AddPlayerModal from "@/components/modal";
+import invertCategory from "@/lib/utils";
 
 export default async function Page() {
   const players = await prisma.player.findMany();
+
+  console.log(players);
 
   return (
     <>
@@ -13,18 +14,15 @@ export default async function Page() {
         {players.map((player) => (
           <PlayerCard
             key={player.id}
+            id={player.id}
             name={player.name}
-            category={player.category}
+            category={invertCategory(player.category)}
             score={player.score}
             image={player.image}
           />
         ))}
       </div>
-      <div className="absolute right-3 bottom-4">
-        <Button radius="full" isIconOnly>
-          <FontAwesomeIcon icon={faPlus} />
-        </Button>
-      </div>
+      <AddPlayerModal />
     </>
   );
 }
